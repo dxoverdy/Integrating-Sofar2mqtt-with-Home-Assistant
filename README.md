@@ -110,7 +110,7 @@ We need to ensure that
 I am on TalkTalk so although my steps will be unique to TalkTalk users, the principles are the same.
 
 
-Navigate to your Router's IP in chrome, usually http://192.168.1.1 or http://192.168.1.254
+Navigate to your Router's IP in Chrome, usually http://192.168.1.1 or http://192.168.1.254
 
 
 It will ask you to log in and the username and password is usually on a sticker on the back of your router.
@@ -582,7 +582,7 @@ In my example, this is http://mydan-dan-ha.duckdns.org:8123
 ![HAURL](Images/HAURL.PNG)
 
 
-##Sofar2mqtt
+## Sofar2mqtt
 ### Gather your details
 Now, we need to take the details of our Mosquitto broker now running on our Home Assistant box and plumb them into Sofar2mqtt.
 
@@ -674,7 +674,7 @@ Click Import
 It may moan about duplication of nodes, choose 'Import Copy'
 
 The flow will appear in the right hand side, and also in a tab at the top.  Click the tab:
-![Node Red Import E7 Settings](Images/SofarFlow.PNG)
+![Node Red Import E7 Settings](Images/E7Flow.PNG)
 
 We just need to verify your Economy 7 or Octopus Go times.  Double click the orange Format node and the following properties screen will open:
 ![Node Red Import E7 Setup](Images/E7Setup.PNG)
@@ -889,6 +889,7 @@ Once you are configured using a cable you can switch to Wi-Fi but bear in mind t
 - You will get a new Local IP assigned to your Raspberry Pi
 - You will need to update your documentation and links to reflect this new Local IP
 - You will need to re-configure your router to ensure the Local IP is reserved and the port 8123 instead forwarded to this new IP
+- You will need to re-flash an updated Sofar2mqtt to your device with the new MQTT IP
 - All the steps above are covered earlier in the documentation
 
 ### To Swap
