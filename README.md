@@ -203,7 +203,7 @@ We have plenty to configure now, so let's get to it.
 Click your name at the bottom left, scroll down and click 'Advanced Mode'
 ![Advanced Mode](Images/Advanced.PNG)
 
-## Configuring Home Assistant - Add-ons
+## Configuring Home Assistant - Install Add-ons
 
 Click Settings at the bottom left
 
@@ -339,7 +339,8 @@ It will prompt to authorise the device with GitHub.  It's a good job we created 
 
 Log in with your details and type in the code and click Continue
 
-HACSCode.PNG
+![HACS Authorisation Code](Images/HACSCode.PNG)
+
 
 Click the green 'Authorise hacs' button.
 
@@ -349,7 +350,7 @@ You can close the Device Activation window and in Home Assistant you will see
 Just click Finish.
 
 
-## Configure Addons
+## Configuring Home Assistant - Configure Add-ons
 OK, let's configure all these Add-ons
 
 Click Settings on the left, click Add-ons and you will see the complete list:
@@ -366,7 +367,7 @@ Click Configuration at the top
 Firstly, you will see a blank domain with an X at the top, delete it by clicking X.
 ![Duck DNS Config 1](Images/DuckDNSConfig1.PNG)
 
-Take the address you configured in DuckDNS in its entirety, in my case, mydan-dan-ha.duckdns.org and get your DuckDNS token which should be in your 'setup.txt' into Token.
+Get the address you configured in DuckDNS in its entirety handy, in my case, mydan-dan-ha.duckdns.org and get your DuckDNS token handy which should be in your 'setup.txt'.
 
 The configuration page at the time of writing is broken, so click the three dots at the top right of Options and click 'Edit in YAML'
 ![Duck DNS Config YAML](Images/DuckDNSYaml.PNG)
@@ -387,306 +388,358 @@ When started, click the Log tab at the top and if successful, you will see a mes
 
 ### File editor:
 Click back to go back to the Add-ons list.
+
 Click on File editor
+
 Click START.
-FileEditorStarted.PNG
+![File Editor Started](Images/FileEditorStarted.PNG)
 
 
-
-
-Home Assistant Google Drive Backup:
+### Home Assistant Google Drive Backup:
 Click back to go back to the Add-ons list.
+
 Click on Home Assistant Google Drive Backup
+
 Click START.
-GoogleDriveStarted.PNG
+![Google Drive Started](Images/GoogleDriveStarted.PNG)
 
 On the left hand menu, click Backups and you will be prompted to Authenticate with Google Drive.
-GoogleDriveSetup.PNG
+![Google Drive Setup](Images/GoogleDriveSetup.PNG)
 
 Click AUTHENTICATE WITH GOOGLE DRIVE
+
 You may need to sign into your Google account, so do so.  Click 'Continue' to allow habackup.io to access your drive.
-It will give you an Authorization String:
-AuthorizationString.PNG
+
+It will give you an Authorisation String:
+![Google Authorization String](Images/AuthorizationString.PNG)
 
 Click the COPY button
+
 Go back to your Home Assistant screen and paste it into the box and click SAVE.
+
 If all is good, you will be prompted with the following:
-BackupComplete.PNG
+![Backup Complete](Images/BackupComplete.PNG)
 
 If the code fails, please check what you pasted and try again.
 
 
-
-
-Node-RED:
+### Node-RED:
 Click Settings on the left menu and click Add-ons to go back to the Add-Ons list.
+
 Click Node-RED.
+
 Click START.
-NodeRedStarted.PNG
+![Backup Complete](Images/NodeRedStarted.PNG)
 
 
-
-
-Mosquitto broker:
+### Mosquitto broker:
 Click the back arrow to go back to the Add-ons list.
+
 Click Mosquitto broker
+
 Click the Configuration tab.
 
 In Logins, paste the following, including the hypen:
+
 - username: battery
+
   password: Switch1
 
+
 battery and Switch1 should be added to your 'setup.txt' file as Sofar2mqtt will need this to post inverter messages.
+
 You can of course choose a different username or password, but this is quite safe for the job.
-MosquittoSetup.PNG
+![Mosquitto Setup](Images/MosquittoSetup.PNG)
 
 Click the blue SAVE button.
+
 Click the Info tab at the top.
+
 Click START
-MosquittoStarted.PNG
+![Mosquitto Started](Images/MosquittoStarted.PNG)
 
 Click the Log tab at the top.  If everything has worked right you should see green messages indicating success.  If not, go back to configuration and check your username and password text box.
-MosquittoDone.PNG
-
-
+![Mosquitto Done](Images/MosquittoDone.PNG)
 
 That's all the Add-ons configured for now.
 
 
 
-HACS Configuration
+## HACS Configuration
 Click HACS on the left hand side
+
 Click Integrations
+
 and then click the Frontend tab.
-HACSIntegrationsFrontEnd.PNG
+![HACS Integrations Frontend](Images/HACSIntegrationsFrontEnd.PNG)
 
 Click the blue + EXPLORE & DOWNLOAD REPOSITORIES
+
 We will be installing the following
 
-card-mod:
+
+## HACS - card-mod:
 Type in card-mod in the 'Search for repository' box
-CardMod.PNG
+![HACS - card-mod](Images/CardMod.PNG)
+
 Click it in when it appears in the list
+
 Click the blue DOWNLOAD button
+
 And click DOWNLOAD in the popup window.  Wait for the install.  Click RELOAD.
 
-layout-card:
+
+## HACS - layout-card:
 Click HACS on the left hand side
+
 Click Integrations
+
 and then click the Frontend tab.
+
 Click the blue + EXPLORE & DOWNLOAD REPOSITORIES
+
 Type in layout-card in the 'Search for repository' box
-LayoutCard.PNG
+![HACS - layout-card](Images/LayoutCard.PNG)
+
 Click it in when it appears in the list
+
 Click the blue DOWNLOAD button
+
 And click DOWNLOAD in the popup window.  Wait for the install.  Click RELOAD.
 
-apexcharts-card:
+
+## HACS - apexcharts-card:
 Click HACS on the left hand side
+
 Click Integrations
+
 and then click the Frontend tab.
+
 Click the blue + EXPLORE & DOWNLOAD REPOSITORIES
+
 Type in apexcharts-card in the 'Search for repository' box
-ApexChartsCard.PNG
+![HACS - apexcharts-card](Images/ApexChartsCard.PNG)
+
 Click it in when it appears in the list
+
 Click the blue DOWNLOAD button
+
 And click DOWNLOAD in the popup window.  Wait for the install.  Click RELOAD.
 
-apexcharts-card:
-Click HACS on the left hand side
-Click Integrations
-and then click the Frontend tab.
-Click the blue + EXPLORE & DOWNLOAD REPOSITORIES
-Type in apexcharts-card in the 'Search for repository' box
-ApexChartsCard.PNG
-Click it in when it appears in the list
-Click the blue DOWNLOAD button
-And click DOWNLOAD in the popup window.  Wait for the install.  Click RELOAD.
 
-Power Flow Card:
+## HACS - Power Flow Card:
 Click HACS on the left hand side
+
 Click Integrations
+
 and then click the Frontend tab.
+
 Click the blue + EXPLORE & DOWNLOAD REPOSITORIES
+
 Type in Power Flow Card in the 'Search for repository' box
-PowerFlowCard.PNG
+![HACS - Power Flow Card](Images/PowerFlowCard.PNG)
+
 Click it in when it appears in the list
+
 Click the blue DOWNLOAD button
+
 And click DOWNLOAD in the popup window.  Wait for the install.  Click RELOAD.
 
 
-
-Sankey Chart Card:
+## HACS - Sankey Chart Card:
 Click HACS on the left hand side
+
 Click Integrations
+
 and then click the Frontend tab.
+
 Click the blue + EXPLORE & DOWNLOAD REPOSITORIES
+
 Type in Sankey Chart Card in the 'Search for repository' box
-SankeyChartCrd.PNG
+![HACS - Sankey Chart Card](Images/SankeyChartCrd.PNG)
+
 Click it in when it appears in the list
+
 Click the blue DOWNLOAD button
+
 And click DOWNLOAD in the popup window.  Wait for the install.  Click RELOAD.
-
-
-
-
-
-
-
 
 
 Add-on configuration is now complete.
 
-Sofar2mqtt
+
+## Configuring Home Assistant - Home Assistant URL
+
+### Home Assistant URL
+Click Settings on the left hand menu
+
+Click System
+
+Click Network
+
+Scroll down to Home Assistant URL and type in the URL as configured in Duck DNS.
+
+In my example, this is http://mydan-dan-ha.duckdns.org:8123
+![HAURL](Images/HAURL.PNG)
+
+
+##Sofar2mqtt
+### Gather your details
 Now, we need to take the details of our Mosquitto broker now running on our Home Assistant box and plumb them into Sofar2mqtt.
 
-From your 'setup.txt' file, you should have the Local IP Address of your Raspberry Pi.  In my case this was
-192.168.1.112
-You should also have the username and password we configured in Mosquitto.  In my case this was
-Username: battery
-Password: Switch1
+From your 'setup.txt' file, you should have the Local IP Address of your Raspberry Pi.  In my case this was 192.168.1.112
 
+You should also have the username and password we configured in Mosquitto.  In my case this was
+- Username: battery
+- Password: Switch1
 
 I am assuming you have followed the build and configuration instructions on the Sofar2mqtt site, and that you have Arduino open with Sofar2mqtt.ino ready in there.
 
-* One thing Sofar2mqtt does not mention is D1mini drivers.  Install the drivers from https://www.wemos.cc/en/latest/ch340_driver.html
+* One thing Sofar2mqtt does not mention is D1mini drivers.  Install the drivers from https://www.wemos.cc/en/latest/ch340_driver.html if you need them.
 
-
-Editing Sofar2mqtt.ino
-
+### Editing Sofar2mqtt.ino
 At the top of the code there are definitions you need to configure based on what we have just done.
-If you are using an ME3000 then ensure the ME3000 line begins #define and that the HYBRID line begins //.
-If you are using a HYBRID then ensure the ME3000 line begins with // and that the HYBRID line begins #define.
+- If you are using an ME3000 then ensure the ME3000 line begins #define and that the HYBRID line begins //.
+- If you are using a HYBRID then ensure the ME3000 line begins with // and that the HYBRID line begins #define.
+- Type in your Wi-Fi name between the quotes for WIFI_SSID
+- Type in your Wi-Fi password between the quotes for WIFI_PASSWORD
+- Type in your Local IP Address of your Raspberry Pi between the quotes for WIFI_PASSWORD
+- Type in your Username you configured in Mosquitto earlier for MQTT_USERNAME, we used battery
+- Type in your Password you configured in Mosquitto earlier for MQTT_PASSWORD, we used Switch1
 
-Type in your Wi-Fi name between the quotes for WIFI_SSID
-Type in your Wi-Fi password between the quotes for WIFI_PASSWORD
-Type in your Local IP Address of your Raspberry Pi between the quotes for WIFI_PASSWORD
-Type in your Username you configured in Mosquitto earlier for MQTT_USERNAME, we used battery
-Type in your Password you configured in Mosquitto earlier for MQTT_PASSWORD, we used Switch1
-
-SofarConfig.PNG
+![Sofar Config](Images/SofarConfig.PNG)
 
 Save this as Sofar2mqtt-customised.ino, that way you have this file to fall back to pre-configured with your details.
-* Remember, if your Wi-Fi changes, you will need to update the WIFI_SSID and WIFI_PASSWORD to suit the new router.
-* Remember, if your Raspberry Pi changes, you will need to update MQTT_SERVER, MQTT_USERNAME and MQTT_PASSWORD to suit your new config.
+- Remember, if your Wi-Fi changes, you will need to update the WIFI_SSID and WIFI_PASSWORD to suit the new router.
+- Remember, if your Raspberry Pi changes, you will need to update MQTT_SERVER, MQTT_USERNAME and MQTT_PASSWORD to suit your new config.
 
 Flash this using the Sketch -> Upload menu.
 
 
-
-
-
-
-
-
-
-Node-RED - Sofar2mqtt.json
-
+## Node-RED - Sofar2mqtt.json
 This flow imports the data from Sofar2mqtt and presents the results to Home Assistant as sensors.
 
 Download Sofar2mqtt.json from this GitHub repository
+
 Click Node-RED on the left hand side
+
 After a pause, you will be greeted with the Intro:
-NodeRedIntro.PNG
+![Node Red Intro](Images/NodeRedIntro.PNG)
 
 Skip through the intro
+
 At the top right, click the three-line menu burger and click Import
-NodeRedIMPORT.PNG
+![Node Red Import](Images/NodeRedIMPORT.PNG)
 
-Click 'select a file to import' and browse to the Sofar2mqtt.json downloaded a few steps ago.
+Click 'select a file to import' and browse to the Sofar2MQTT.json downloaded a few steps ago.
+
 Click 'new flow' for Import to
-Click Import
-The flow will appear in the right hand side, and also in a tab at the top.  Click the tab:
-SofarFlow.PNG
 
+Click Import
+
+The flow will appear in the right hand side, and also in a tab at the top.  Click the tab:
+![Sofar Flow](Images/SofarFlow.PNG)
 
 We just need to configure the Mosquitto details and we are done.
+
 Double click the purple Sofar2MQTT node on the left and the following properties screen will open:
-SofarFlowConfig1.PNG
+![Sofar Flow Config](Images/SofarFlowConfig1.PNG)
 
 Click the Pencil alongside 'Home Assistant Mosquitto'
+
 Click on the 'Security' tab and type in our Mosquitto username and password configured earlier.
+
 In my case, these were battery and Switch1
-BrokerNodeConfig.PNG
+![Broker Node Config](Images/BrokerNodeConfig.PNG)
 
 Click Update
+
 Click Done
 
 Click Deploy at the top right.  Once deployed, you will see that the MQTT node Sofar2MQTT has connected:
-BrokerConnected.PNG
+![Broker Connected](Images/BrokerConnected.PNG)
 
 
-
-
-OPTIONAL Node-Red Economy7Management.json
-
+## OPTIONAL Node-Red - Economy7Management.json
 This flow will automatically charge the battery to 100% and keep the load powered by the grid until the end of the Economy 7 time period.  This is useful if you are leveraging Econonmy 7 and also within winter months where solar generation is poor.
 
 At the top right, click the three-line menu burger and click Import
-NodeRedIMPORT.PNG
+![Node Red Import E7](Images/NodeRedIMPORT.PNG)
 
 Click 'select a file to import' and browse to the Economy7Management.json downloaded a few steps ago.
+
 Click 'new flow' for Import to
+
 Click Import
-It may moan about copy of nodes, choose 'Import Copy'
+
+It may moan about duplication of nodes, choose 'Import Copy'
+
 The flow will appear in the right hand side, and also in a tab at the top.  Click the tab:
-SofarFlow.PNG
+![Node Red Import E7 Settings](Images/SofarFlow.PNG)
 
 We just need to verify your Economy 7 or Octopus Go times.  Double click the orange Format node and the following properties screen will open:
-E7Setup.PNG
+![Node Red Import E7 Setup](Images/E7Setup.PNG)
+
 Scroll down to the part of the code shown in the screenshot above to configure your cheap rate tariff.  It is defaulted to 00:35 and 07:25.
+
 Click Done
+
 Click Deploy at the top right.  Once deployed, you will see that the MQTT node Sofar2MQTT has connected:
-E7Connected.PNG
+![Node Red Import E7 Connected](Images/E7Connected.PNG)
+
+If you want to disable this, open Node-RED, click the 'Economy 7 Management' tab at the top
+
+On the right hand side list, there is a white circle next to Economy 7 Management labelled Disable.  Simply click this as below:
+![Node Red Disable E7](Images/E7Disable.png)
 
 
-
-
-MQTT Integration
+## MQTT Integration
 We need to connect Home Assistant to our Mosquitto broker which runs alongside it.  We do this like so:
+
 Click on Settings on the left hand side
+
 Click Devices & Services
+
 Click the CONFIGURE button under MQTT:
-MQTTIntegration.PNG
+![MQTT Integration](Images/MQTTIntegration.PNG)
 
 It will prompt 'Do you want to configure Home Assistant to connect to the MQTT broker provided by the add-on Mosquitto broker?'
+
 Click SUBMIT
+
 It will then auto-configure for Mosquitto and leave you with the following:
-BrokerConfigured.PNG
+![MQTT Broker Configured](Images/BrokerConfigured.PNG)
 
 
 
-
-
-
-
-
-
-
-configuration.yaml
-
+## Home Assistant - configuration.yaml
 The configuration.yaml is the file which contains all the Home Assistant configuration.  We will take a backup of it now.
 
 Click File editor on the left hand side
+
 Click the white folder icon at the top left
+
 Click on configuration.yaml in the config/ folder:
-ConfigurationYaml.PNG
+![Configuration YAML](Images/ConfigurationYaml.PNG)
 
 In the right hand side you will see it is a pretty simple config at this stage.  To save it locally, copy and paste the contents to a new Notepad and save the file to your desktop as configuration-backup-2023-01-06.yaml.  Change 2023-01-06 to reflect the yyyy-mm-dd you are doing this.  This is just a safeguard.
 
 Download the configuration.yaml from this GitHub Repository
-Open the file in Notepad
-Copy all the contents using Edit -> Select All and copy using Edit -> Copy
-Back in Home Assistant, delete the contents in the window already:
 
-ConfigEmpty.PNG
+Open the file in Notepad
+
+Copy all the contents using Edit -> Select All and copy using Edit -> Copy
+
+Back in Home Assistant, delete the contents in the window already:
+![Configuration YAML Empty](Images/ConfigEmpty.PNG)
 
 and paste the contents so it looks like this
-ConfigPasted.PNG
+![Configuration YAML Replaced](Images/ConfigPasted.PNG)
 
 Click the reddy-orange SAVE button at the top right.
+
 Click 'Developer Tools' on the left hand side and click 'Check Configuration' and if all is good you should get a green message:
-ConfigSuccess.PNG
+![Configuration YAML Success](Images/ConfigSuccess.PNG)
 
 Click RESTART and confirm by clicking RESTART in the confirmation box.
 
@@ -694,134 +747,163 @@ Once back up and running, we only have dashboards to configure!
 
 
 
-Dashboards:
+## Home Assistant - Dashboards:
 There are two dashboards, one which shows all information in real-time.  The second is to do with inverter control.
 
-Real-Time Info:
+### Real-Time Info Dashboard:
 Click on Settings and then click on Dashboards
+
 Click + ADD DASHBOARD at the bottom right.
-AddDashboard.PNG
+![Add Dashboard](Images/AddDashboard.PNG)
 
 Configure a dashboard called SOFAR
-Choose an icon, i used mdi:solar-panel
-And ensure Show in sidebar is ticked
 
-CreateDashboardSOFAR.PNG
+Choose an icon, I used mdi:solar-panel
+
+And ensure Show in sidebar is ticked
+![Create Dashboard Sofar](Images/CreateDashboardSOFAR.PNG)
 
 Click Create
 
 Click SOFAR which will now be at the top left hand side.  Click the three dots on the far right side and click Edit Dashboard
-EditDashboard.PNG
-
+![Edit Dashboard Sofar](Images/EditDashboard.PNG)
 
 Tick 'Start with an empty dashboard' and then 'TAKE CONTROL'
-TakeControl.PNG
+![Take Control Sofar](Images/TakeControl.PNG)
 
 Click the three dots at the top right and click 'Raw configuration editor'
-RawConfig.PNG
+![Raw Config Sofar](Images/RawConfig.PNG)
 
 Select all the text currently in there and get rid.
+
 Open SofarDashboard.txt from this repository in Notepad and copy and paste the contents into the window like so:
-SofarDashboard.PNG
+![Raw Config Sofar Dashboard](Images/SofarDashboard.PNG)
 
 Click SAVE at the top right
+
 Press the X at the top left
+
 Then click DONE at the top right
 
-Your dashboard shouldn't look too far away from the following:
-SOFAR1Example.PNG
+Your dashboard shouldn't look too different to the following:
+![SOFAR Page 1](Images/SOFAR1Example.PNG)
 
 Clicking on TODAY'S POWER DIAGRAM will give you today's picture in a graph:
-Today.PNG
+![SOFAR Page 2](Images/Today.PNG)
 
 
-If you get a problem on any of the tabs, for example the TODAY'S POWER DIAGRAM you may see 'Custom element doesn't exist: apexcharts-card' then I found this just to be a bug in HACS.
+### If you get a problem on any of the tabs, for example the TODAY'S POWER DIAGRAM you may see 'Custom element doesn't exist: apexcharts-card' then I found this just to be a bug in HACS.
 To overcome, click on HACS on the left hand menu
+
 Click Frontend
+
 You will see all the elements which are Not Loaded in red:
-NotLoaded.PNG
+![Not Loaded](Images/NotLoaded.PNG)
 
 Click on any
-Click the three dots menu at the top right
-Click Redownload
-Redownload.PNG
-And click Download in the popup
-When done, click RELOAD
 
+Click the three dots menu at the top right
+
+Click Redownload
+![Redownload](Images/Redownload.PNG)
+
+And click Download in the popup
+
+When done, click RELOAD
 
 Repeat for all other unloaded elements.
 
 
-
-
-
-
-
-
-Inverter Control:
+### Inverter Control Dashboard
 Click on Settings and then click on Dashboards
+
 Click + ADD DASHBOARD at the bottom right.
-AddDashboard.PNG
+![Add Dashboard](Images/AddDashboard.PNG)
 
 Configure a dashboard called Inverter Control
-Choose an icon, i used mdi:remote
+
+Choose an icon, I used mdi:remote
+
 And ensure Show in sidebar is ticked
+
 Click Create
 
 Click Inverter Control which will now be at the top left hand side.  Click the three dots on the far right side and click Edit Dashboard
-EditDashboard2.PNG
-
+![Edit Dashboard 2](Images/EditDashboard2.PNG)
 
 Tick 'Start with an empty dashboard' and then 'TAKE CONTROL'
-TakeControl.PNG
+![Take Control 2](Images/TakeControl.PNG)
 
 Click the three dots at the top right and click 'Raw configuration editor' as before.
 
-
 Select all the text currently in there and get rid.
+
 Open InverterControlDashboard.txt from this repository in Notepad and copy and paste the contents into the window like so:
-SofarDashboard.PNG
+![Inverter Control Pasted](Images/InverterControlPasted.PNG)
 
 Click SAVE at the top right
+
 Press the X at the top left
+
 Then click DONE at the top right
 
 Your dashboard shouldn't look too far away from the following:
-InverterControl.PNG
+![Inverter Control Dashboard](Images/InverterControl.PNG)
 
 
 
+## Home Assistant via your Smart Phone or Tablet, Home or Away
 If you want to access Home Assistant on your phone or tablet, download the Home Assistant App or use your appropriate web browser.
 
+### Web Browser
 If using a web browser, simply browse to your DuckDNS URL when away from home
+
 For example, I will use http://mydan-dan-ha.duckdns.org:8123
 
-RemoteURL.PNG
-RemoteLogin.PNG
-RemoteDashboard.PNG
+![Remote URL](Images/RemoteURL.PNG)
+![Remote Login](Images/RemoteLogin.PNG)
+![Remote Dashboard](Images/RemoteDashboard.PNG)
 
 If your router is smart it will also work if you are on Wi-Fi.  If not (like me), you will need a second bookmark of Local IP:8123
+
+Where Local IP is the IP assigned right back when Home Assistant was first installed.
+
 For example, I will use http://192.168.1.112:8123
 
-LocalLink.PNG
-LocalLogin.PNG
-LocalDashboard.PNG
+![Local URL](Images/LocalLink.PNG)
+![Local Login](Images/LocalLogin.PNG)
+![Local Dashboard](Images/LocalDashboard.PNG)
+
+### App
+Find and install the Home Assistant app via Apple's App Store or Google's Play Store
+
+When using the app, it is an identical configuration, simply use the details as per the Web Browser approach.
+
+Bear in mind likewise that, if your router doesn't support internal redirection then you will only be able to configure the Home Assistant app to work when at home or away.
+
+Personally, I'd set up the app for use at home using the Local IP, and use a web browser when away.  But the choice is yours.
 
 
-When using the app, it is a similar configuration, simply use the addresses as configured and the appropriate username and password.
+## Home Assistant and Wi-Fi
+Once you are configured using a cable you can switch to Wi-Fi but bear in mind the following
+
+- You will get a new Local IP assigned to your Raspberry Pi
+- You will need to update your documentation and links to reflect this new Local IP
+- You will need to re-configure your router to ensure the Local IP is reserved and the port 8123 instead forwarded to this new IP
+- All the steps above are covered earlier in the documentation
+
+### To Swap
+Click Settings at the bottom left
+
+Click System
+
+Click Network
+
+Scroll down to Network Adapter and configure your Wi-Fi settings.  Once done and saved, unplug your network cable and reboot.  The boot-up sequence should point to you the new IP as per:
+![Pic 1](Images/Pic1.PNG)
 
 
+## Queries
+I will endeavour to help you if you are struggling.  Try email or [Facebook](https://www.facebook.com/mydan100/).
 
-
-Queries?
-Contact.
-
-
-
-
-
-
-
-
-
-
+Daniel Young 2023 [daniel@mydan.com](daniel@mydan.com)
