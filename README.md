@@ -1,0 +1,1 @@
+# Integrating Sofar2mqtt with Home Assistant
