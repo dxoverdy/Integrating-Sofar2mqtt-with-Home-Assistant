@@ -8,27 +8,27 @@ Build or obtain a [Sofar2mqtt](https://github.com/cmcgerty/Sofar2mqtt)
 I recommend you utilise the 3.3v MAX3485 (Red module) if building this yourself.  I also recommend the screen.  The screen isn't required but it at least provides some initial feedback about whether your build is working.  In short, spend the money and spend less time debugging!
 
 
-###Obtain a [Raspberry Pi 4 Model B](https://thepihut.com/products/raspberry-pi-starter-kit?variant=20336446079038) - Preferably 4Gb.
+### Obtain a [Raspberry Pi 4 Model B](https://thepihut.com/products/raspberry-pi-starter-kit?variant=20336446079038) - Preferably 4Gb.
 
 I recommend you use Facebook Marketplace for local deals, however, I personally use a [Pi 400 4Gb](https://cpc.farnell.com/raspberry-pi/rpi400-kit-uk/raspberry-pi-400-kit-uk/dp/SC15825?CMP=TREML007-005&fbclid=IwAR0FnhpZ6vZ6hfrmIsEBRuoC5Vwq5PgEHoUJa1dkZE5jQ06H3SgkhRzrS6A)
 
 The 400 is identical to the plain Raspberry Pi 4 Model B, however you don't need to build and case the device, and it comes with an integrated and keyboard in mouse to save you needing to source separate ones.  It is still small enough to tuck to one side once it is all up and running.
 
 
-###Create a file called 'setup.txt' for notes
+### Create a file called 'setup.txt' for notes
 
 Save it to your desktop, open it in Notepad and have it ready throughout this guide to save account details and links and tokens as you go along.
 
 
-##Accounts you will need to create if you don't already have
+## Accounts you will need to create if you don't already have
 
-###[Google](https://www.google.co.uk/)
+### [Google](https://www.google.co.uk/)
 Google is more than just a search engine, with an account you are entitled to free storage called Google Drive, an email address and much much more.  You probably have one, but if not, sign up using the link in the header.  Add these details to your 'setup.txt'
 
 We will be leveraging Google to store automated daily Home Assistant backups so that in the case of memory card failure, you can easily restore as was.
 
 
-###[GitHub](https://github.com/)
+### [GitHub](https://github.com/)
 GitHub is a source code management/collaboration tool, but it is also used for authentication purposes.  It is free and well renowed in the software development industry.
 
 Sign up using the link in the header and the click Sign up at the top right of their page.
@@ -37,7 +37,7 @@ Follow the instructions to set up and activate your account.  Add these details 
 
 
 
-###[DuckDNS](https://duckdns.org/)
+### [DuckDNS](https://duckdns.org/)
 DuckDNS is a tool which gives you a static web address for your Internet connection.  Unless you have an extremely fancy Internet connection, every time your router reboots or disconnects from the Internet you will get a different IP address for your next connection.  This is the IP address which is used to present your local area network to the world.  The reason this is done is because there are a finite number of IP addresses and so IPs are dished out from a large pool and are re-used, rather than physically assigning one IP address to your router forever.  It would be a waste if lots of routers were not online and would contribute to IP address shortage.
 
 So, with DuckDNS configured in Home Assistant later any change of IP address is recorded by DuckDNS and DuckDNS gives you a nice clean URL such as http://mysuperhomeassistantinstall.duckdns.org regardless of what your IP changes to.
@@ -61,7 +61,7 @@ aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
 You can close DuckDNS for now.
 
 
-##Install Home Assistant
+## Install Home Assistant
 
 This guide assumes you have a Raspberry Pi and are leveraging Home Assistant Operating System.  As such, navigate to https://www.home-assistant.io/installation/ and scroll down to Raspberry Pi and click it.  Alternatively, navigate directly to https://www.home-assistant.io/installation/raspberrypi
 
