@@ -439,12 +439,11 @@ Click Mosquitto broker
 
 Click the Configuration tab.
 
-In Logins, paste the following, including the hypen:
-
+In Logins, paste the following, including the hyphen:
+```
 - username: battery
-
   password: Switch1
-
+```
 
 battery and Switch1 should be added to your 'setup.txt' file as Sofar2mqtt will need this to post inverter messages.
 
@@ -482,7 +481,7 @@ We will be installing the following
 Type in card-mod in the 'Search for repository' box
 ![HACS - card-mod](Images/CardMod.PNG)
 
-Click it in when it appears in the list
+Click it when it appears in the list
 
 Click the blue DOWNLOAD button
 
@@ -501,7 +500,7 @@ Click the blue + EXPLORE & DOWNLOAD REPOSITORIES
 Type in layout-card in the 'Search for repository' box
 ![HACS - layout-card](Images/LayoutCard.PNG)
 
-Click it in when it appears in the list
+Click it when it appears in the list
 
 Click the blue DOWNLOAD button
 
@@ -520,7 +519,7 @@ Click the blue + EXPLORE & DOWNLOAD REPOSITORIES
 Type in apexcharts-card in the 'Search for repository' box
 ![HACS - apexcharts-card](Images/ApexChartsCard.PNG)
 
-Click it in when it appears in the list
+Click it when it appears in the list
 
 Click the blue DOWNLOAD button
 
@@ -539,7 +538,7 @@ Click the blue + EXPLORE & DOWNLOAD REPOSITORIES
 Type in Power Flow Card in the 'Search for repository' box
 ![HACS - Power Flow Card](Images/PowerFlowCard.PNG)
 
-Click it in when it appears in the list
+Click it when it appears in the list
 
 Click the blue DOWNLOAD button
 
@@ -558,7 +557,7 @@ Click the blue + EXPLORE & DOWNLOAD REPOSITORIES
 Type in Sankey Chart Card in the 'Search for repository' box
 ![HACS - Sankey Chart Card](Images/SankeyChartCrd.PNG)
 
-Click it in when it appears in the list
+Click it when it appears in the list
 
 Click the blue DOWNLOAD button
 
