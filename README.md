@@ -5,12 +5,14 @@
 ### Sofar2mqtt
 Build or obtain a [Sofar2mqtt](https://github.com/cmcgerty/Sofar2mqtt)
 
+
 I recommend you utilise the 3.3v MAX3485 (Red module) if building this yourself.  I also recommend the screen.  The screen isn't required but it at least provides some initial feedback about whether your build is working.  In short, spend the money and spend less time debugging!
 
 
 ### Obtain a [Raspberry Pi 4 Model B](https://thepihut.com/products/raspberry-pi-starter-kit?variant=20336446079038) - Preferably 4Gb.
 
 I recommend you use Facebook Marketplace for local deals, however, I personally use a [Pi 400 4Gb](https://cpc.farnell.com/raspberry-pi/rpi400-kit-uk/raspberry-pi-400-kit-uk/dp/SC15825?CMP=TREML007-005&fbclid=IwAR0FnhpZ6vZ6hfrmIsEBRuoC5Vwq5PgEHoUJa1dkZE5jQ06H3SgkhRzrS6A)
+
 
 The 400 is identical to the plain Raspberry Pi 4 Model B, however you don't need to build and case the device, and it comes with an integrated and keyboard in mouse to save you needing to source separate ones.  It is still small enough to tuck to one side once it is all up and running.
 
@@ -25,13 +27,16 @@ Save it to your desktop, open it in Notepad and have it ready throughout this gu
 ### [Google](https://www.google.co.uk/)
 Google is more than just a search engine, with an account you are entitled to free storage called Google Drive, an email address and much much more.  You probably have one, but if not, sign up using the link in the header.  Add these details to your 'setup.txt'
 
+
 We will be leveraging Google to store automated daily Home Assistant backups so that in the case of memory card failure, you can easily restore as was.
 
 
 ### [GitHub](https://github.com/)
 GitHub is a source code management/collaboration tool, but it is also used for authentication purposes.  It is free and well renowed in the software development industry.
 
+
 Sign up using the link in the header and the click Sign up at the top right of their page.
+
 
 Follow the instructions to set up and activate your account.  Add these details to your 'setup.txt'
 
@@ -40,263 +45,346 @@ Follow the instructions to set up and activate your account.  Add these details 
 ### [DuckDNS](https://duckdns.org/)
 DuckDNS is a tool which gives you a static web address for your Internet connection.  Unless you have an extremely fancy Internet connection, every time your router reboots or disconnects from the Internet you will get a different IP address for your next connection.  This is the IP address which is used to present your local area network to the world.  The reason this is done is because there are a finite number of IP addresses and so IPs are dished out from a large pool and are re-used, rather than physically assigning one IP address to your router forever.  It would be a waste if lots of routers were not online and would contribute to IP address shortage.
 
+
 So, with DuckDNS configured in Home Assistant later any change of IP address is recorded by DuckDNS and DuckDNS gives you a nice clean URL such as http://mysuperhomeassistantinstall.duckdns.org regardless of what your IP changes to.
+
 
 Sign up using the link in the header.  Click 'Sign in with GitHub' or 'Sign in with Google' and follow the instructions to set up and activate your account.  Add these details to your 'setup.txt'
 
+
 Once logged in, find the domains section and type in an address.  This will be used for your Home Assistant.  I am going to be using http://mydan-dan-ha.duckdns.org
 
+
 I recommend you type something fairly unique and something relatively easy.  Don't be surprised if you type in something common - as it will be already used by someone else!
+
 
 Click 'add domain' in green.
 ![DuckDNS Add Domain](Images/Duck1.PNG)
 
+
 And it will be added to your account:
-![DuckDNS Added Domain](Integrating-Sofar2mqtt-with-Home-Assistant/Images/DuckDNSDone.PNG)
+![DuckDNS Added Domain](Images/DuckDNSDone.PNG)
+
 
 At the top of your account, please take note of your token and add these details to your 'setup.txt', it will be in the form
 aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
-![DuckDNS Token](Integrating-Sofar2mqtt-with-Home-Assistant/Images/DuckDNSToken.PNG)
+![DuckDNS Token](Images/DuckDNSToken.PNG)
+
 
 You can close DuckDNS for now.
 
 
 ## Install Home Assistant
-
+### Install Home Assistant
 This guide assumes you have a Raspberry Pi and are leveraging Home Assistant Operating System.  As such, navigate to https://www.home-assistant.io/installation/ and scroll down to Raspberry Pi and click it.  Alternatively, navigate directly to https://www.home-assistant.io/installation/raspberrypi
+
 
 Follow the instructions to utilise Balena Etcher to flash your Raspberry Pi's memory card with the 64-bit edition of Home Assisant OS.  At the time of writing, the version is 9.4, URL is https://github.com/home-assistant/operating-system/releases/download/9.4/haos_rpi4-64-9.4.img.xz
 
+
 You will need your Raspberry Pi to be hard-wired to your router via an Ethernet cable in the first instance.  This guide will concentrate on utilising an Ethernet cable throughout, but it will cover how to swap over to Wi-Fi once everything is up and running.
+
 
 Once flashed, put the memory card in your Raspberry Pi and boot it up.
 
-You will see quite a lot of text scrolling along the screen as it boots up, however once finished you will be presented with the following screen:
 
-Pic1.PNG
+You will see quite a lot of text scrolling along the screen as it boots up, however once finished you will be presented with the following screen:
+![Pic 1](Images/Pic1.PNG)
+
 
 Highlighted in this pic are two elements, first is the Local IP address dedicated to your Raspberry Pi by your router.  The second is the URL which you can use to access Home Assistant on your local network via a phone, tablet or computer.
 
+
 As such, open Chrome or any browser of your choice and navigate to http://homeassistant.local:8123/ or in my case, I can navigate to http://192.168.1.112:8123/ as that is the Local IP address given to my Raspberry Pi by your router.  Your Local IP address will undoubtedly be different to mine.
+
 
 Your IP (in my case 192.168.1.112) should be added to your 'setup.txt' file as Sofar2mqtt will need this to post inverter messages later.
 
-Configuring your Router
+## Configuring your Router
+### Configuring your Router
 We need to ensure that
-A) Your Raspberry Pi always gets given the same Local IP address, in my case 192.168.1.112, every time it is booted up.  Your router will work like your Internet IP and re-use IP addresses from a pool for the same reasons of IP address shortage.
-B) Open up port 8123 (the bit after the colon in the address above) to the outside world so you can access your Home Assistant from anywhere.
+
+- Your Raspberry Pi always gets given the same Local IP address, in my case 192.168.1.112, every time it is booted up.  Your router will work like your Internet IP and re-use IP addresses from a pool for the same reasons of IP address shortage.
+
+- Open up port 8123 (the bit after the colon in the address above) to the outside world so you can access your Home Assistant from anywhere.
 
 I am on TalkTalk so although my steps will be unique to TalkTalk users, the principles are the same.
 
+
 Navigate to your Router's IP in chrome, usually http://192.168.1.1 or http://192.168.1.254
+
+
 It will ask you to log in and the username and password is usually on a sticker on the back of your router.
 
+
 Click into an area of your router's configuration which deals with your connected devices.
+
+
 In my case this is called 'Manage my devices' but could be known as 'Local Network', etc.
-Router1.PNG
+![Router 1](Images/Router1.PNG)
+
 
 And sure enough, I can see my homeassistant device:
-HAInRouter.PNG
+![Home Assistant In Router](Images/HAInRouter.PNG)
+
 
 I click on Advanced so I can change settings, and click into homeassistant:
-HAInRouter2.PNG
+![Home Assistant In Router 2](Images/HAInRouter2.PNG)
+
 
 I can click 'Reserve IP' to ensure that my homeassistant always gets the same address and click Apply:
-ReserveHARouterIP.PNG
+![Reserve IP](Images/ReserveHARouterIP.PNG)
+
 
 I can click in Port Forwarding to configure the appropriate port to be opened to the outside world.
+
 I will type in a Custom service name of Home Assistant
+
+
 Leave Protocol as TCP
+
+
 Leave External host empty
+
+
 Type 8123 into External Port
+
+
 and type 8123 into Internal Port
-PortConfigureRouter1.PNG
+![Port Config Router](Images/PortConfigureRouter1.PNG)
 
 
-and click Add
-and click Apply to finish
-PortConfigureRouter2.PNG
+Click Add
+
+
+Click Apply to finish
+![Port Config Router 2](Images/PortConfigureRouter2.PNG)
+
 
 You can close your router's configuration page now.
 
-
-
-
+## Initial Setup of Home Assistant
 Once I go to that address, I am greeted with:
 
-Pic2.PNG
+![Get Started](Images/Pic2.PNG)
 
 I am going to configure my system with some example details:
-Name: Dan
-Username: dan
-Password: mypass
-Confirm Password: mypass
+- Name: Dan
+- Username: dan
+- Password: mypass
+- Confirm Password: mypass
 
 And I'll click Create Account
 
-*You should use your full name and a username and password which are secure enough not to be guessed (as your Raspberry Pi will be open to the outside world) but not complex enough to be forgotten!
+You should use your full name and a username and password which are secure enough not to be guessed (as your Raspberry Pi will be open to the outside world) and you should add them to your 'setup.txt' so that they aren't forgotten.
 
 The next screen will prompt you for a name, I'd leave it as default for Home because Home Assistant doesn't just cover off linking to Sofar2mqtt, it can also drive any Hue bulbs you may have, Google Nest products and a whole reap of other home automation kit.
 
-Pic3.PNG
+![Location](Images/Pic3.PNG)
 
 I highly recommend you complete where you live, as this will also help solar predictions and ensure your time zones remain correct for Winter and Summer, if you are in the UK think Economy 7 / Octopus Go charging times.  Click Next
 
-
 Choose whether or not you are happy sharing stats and click Next
-Pic4.PNG
-
+![Stats](Images/Pic4.PNG)
 
 And the final step will show any services already found on the network.  You can see here it has picked up my HomeKit, Google Cast, Office HomePod and Philips Hue lighting.  We don't want to configure those yet so just click Finish.
-Pic5.PNG
+![Services](Images/Pic5.PNG)
 
 Now you are in and ready with a fresh install of Home Assistant!
-Pic6.PNG
-
+![Fresh Install](Images/Pic6.PNG)
 
 
 We have plenty to configure now, so let's get to it.
 
+
+## Configuring Home Assistant - Advanced Mode
+
+### Advanced Mode
 Click your name at the bottom left, scroll down and click 'Advanced Mode'
-Advanced.PNG
+![Advanced Mode](Images/Advanced.PNG)
 
-
-
-
+## Configuring Home Assistant - Add-ons
 
 Click Settings at the bottom left
+
 Click Add-ons
+
 The screen will be empty with an ADD-ON STORE button at the bottom right.  Click it.
 
-Pic7.PNG
+![Add-ons](Images/Pic7.PNG)
 
-
+### DuckDNS
 Find and click DuckDNS and click INSTALL and wait until completed.  Once completed you'll have a START or UNINSTALL option.
-Pic8.PNG
+![DuckDNS Install](Images/Pic8.PNG)
+
 Just click the back arrow
 
+### File editor
 Find and click File editor and click INSTALL and wait until completed.  Once completed you'll have a START or UNINSTALL option.
-Pic9.PNG
+![File editor Install](Images/Pic9.PNG)
+
 Click 'Show in sidebar'
+
 Just click the back arrow
 
-
+### Mosquitto broker
 Find and click Mosquitto broker and click INSTALL and wait until completed.  Once completed you'll have a START or UNINSTALL option.
-Pic10.PNG
+![Mosquitto broker Install](Images/Pic10.PNG)
+
 Just click the back arrow
 
-
+### Node-RED
 Find and click Node-RED and click INSTALL and wait until completed.  Once completed you'll have a START or UNINSTALL option.
-Pic11.PNG
+![Node-RED Install](Images/Pic11.PNG)
+
 Click 'Show in sidebar'
+
 Click the 'Configuration' tab
+
 Copy and paste MySecretPa$$Word into the credential_secret box
+
 UNTICK ssl
 
-NodeRedCredential.PNG
+![Node-RED Credentials](Images/NodeRedCredential.PNG)
 Click SAVE
+
 Just click the back arrow
 
 
-Google Drive Backup
-https://github.com/sabeechen/hassio-google-drive-backup
+### Google Drive Backup
+As per https://github.com/sabeechen/hassio-google-drive-backup
+
 At the top right of the 'Add-on Store' there is a three dot menu button.  Click it and click 'Respositories'
+
 Type
+
 https://github.com/sabeechen/hassio-google-drive-backup
+
 into the box and click ADD
-BackupGoogleDrive.PNG
+
+![Google Drive Backup](Images/BackupGoogleDrive.PNG)
 Then click CLOSE
+
 Refresh the window by pressing F5 on your keyboard
 
 Find and click 'Home Assistant Google Drive Backup' (at the bottom of the store usually) and click INSTALL and wait until completed.  Once completed you'll have a START or UNINSTALL option.
+
 Click 'Show in sidebar'
+
 Just click the back arrow
 
 
+### Terminal & SSH
 Find and click Terminal & SSH and click INSTALL and wait until completed.  Once completed you'll have a START or UNINSTALL option.
-Pic12.PNG
+
+![Terminal And SSH Install](Images/Pic12.PNG)
 Click 'Show in sidebar'
+
 Click 'START'
+
 Just click the back arrow
 
 
-
+### HACS
 We will now be installing HACS for some extra fun such as chart types.  The download link for HACS is https://hacs.xyz/docs/setup/download and we will be following the OS/Supervised route.  However, as we have done most of the heavy lifting all we need to do is
+
+
 Click 'Terminal' on the left
 
+
 You will be prompted with a terminal interface to type commands.
-Terminal.PNG
+![Terminal](Images/Terminal.PNG)
+
 
 Type in
 
+
 wget -O - https://get.hacs.xyz | bash -
 
+
 Include that minus at the end and that is a capital O, not zero (0).
-Terminal2.PNG
+![Terminal About To Install](Images/Terminal2.PNG)
+
 
 Once completed you should see something like this:
-Terminal3.PNG
+![Terminal Installed](Images/Terminal3.PNG)
+
 
 As you can see, it is recommending you restart.  So we will do that now.  Click on Developer Tools on the left and click 'RESTART' in red and click RESTART again to confirm.
-Restart.PNG
+![HACS Restart](Images/Restart.PNG)
+
 
 Wait a while and Home Assistant will be back up and running where you left off.
+
+
 We need to hard refresh your browser, so in the case of Chrome and most other browsers, hold Control and press F5 on the keyboard.  It will ask you to log back in.  Use your username and password from earlier.  I recommend you tick the 'Keep me logged in' box.
-Login.PNG
+![Login](Images/Login.PNG)
+
 
 Click Settings on the left and click Devices & Services
+
+
 Click the blue + ADD INTEGRATION at the bottom right.
-AddIntegration.PNG
+![Add Integration](Images/AddIntegration.PNG)
+
 
 Scroll down the list to HACS and click it.  You will be prompted for several tickboxes you need to tick.
+
 Tick them all and click SUBMIT.
-HACSInstall.PNG
+![HACS Install](Images/HACSInstall.PNG)
 
 It will prompt to authorise the device with GitHub.  It's a good job we created an account earlier.
+
+
 Log in with your details and type in the code and click Continue
+
 HACSCode.PNG
+
 Click the green 'Authorise hacs' button.
+
 You can close the Device Activation window and in Home Assistant you will see
-HACSDone.PNG
+![HACS Done](Images/HACSDone.PNG)
 
 Just click Finish.
 
 
-
+## Configure Addons
 OK, let's configure all these Add-ons
+
 Click Settings on the left, click Add-ons and you will see the complete list:
-AddOns.PNG
+![Add-ons](Images/AddOns.PNG)
+
 Where the icon is black and white, it means it isn't yet running.  You will see Terminal & SSH is coloured in because we started it to install HACS via the terminal interface.
 
 
-
-
-Duck DNS:
+### Duck DNS:
 Click on Duck DNS
-Click Configuration at the top
-Firstly, you will see a blank domain with an X at the top, delete it by clicking X.
-DuckDNSConfig1.PNG
 
+Click Configuration at the top
+
+Firstly, you will see a blank domain with an X at the top, delete it by clicking X.
+![Duck DNS Config 1](Images/DuckDNSConfig1.PNG)
 
 Take the address you configured in DuckDNS in its entirety, in my case, mydan-dan-ha.duckdns.org and get your DuckDNS token which should be in your 'setup.txt' into Token.
 
 The configuration page at the time of writing is broken, so click the three dots at the top right of Options and click 'Edit in YAML'
-DuckDNSYaml.PNG
+![Duck DNS Config YAML](Images/DuckDNSYaml.PNG)
 
 In the square brackets in domains:, paste in your address from DuckDNS without the http://, i.e. mydan-dan-ha.duckdns.org
+
 Within the quotes for token:, paste in your token from DuckDNS.
-DuckDNSBrokenConfig.PNG
+![Duck DNS Broken Config](Images/DuckDNSBrokenConfig.PNG)
 
 Click 'SAVE'
 
 Click the Info tab at the top and click START.
+
 When started, click the Log tab at the top and if successful, you will see a message in green either indicating there's no change, or that it was successfully updated.  If it hasn't worked, double check your address, your token, and try again.
-DuckDNSSuccess.PNG
+![Duck DNS Success](Images/DuckDNSSuccess.PNG)
 
 
 
-
-File editor:
+### File editor:
 Click back to go back to the Add-ons list.
 Click on File editor
 Click START.
