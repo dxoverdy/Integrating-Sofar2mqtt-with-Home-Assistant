@@ -1,0 +1,657 @@
+
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+  extra_module_url:
+    - /hacsfiles/lovelace-card-mod/card-mod.js
+
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+
+
+
+
+
+#MQTT
+mqtt:
+  button:
+# House Buttons
+    - unique_id: sofar_set_standby
+      command_topic: "Sofar2mqtt/set/standby"
+      name: "SOFAR Set Standby"
+      payload_press: "true"
+      qos: 0
+      retain: false
+      entity_category: "config"
+      icon: "mdi:power-standby"
+      
+    - unique_id: sofar_set_auto
+      command_topic: "Sofar2mqtt/set/auto"
+      name: "SOFAR Set Auto"
+      command_template: "true"
+      qos: 0
+      retain: false
+      entity_category: "config"
+      icon: "mdi:lightbulb-auto"
+      
+    - unique_id: sofar_set_battery_save
+      command_topic: "Sofar2mqtt/set/auto"
+      name: "SOFAR Set Battery Save"
+      command_template: "battery_save"
+      qos: 0
+      retain: false
+      entity_category: "config"
+      icon: "mdi:lightbulb-auto"
+
+    - unique_id: sofar_set_charge
+      command_topic: "Sofar2mqtt/set/charge"
+      name: "SOFAR Set Charge"
+      command_template: "{{ states('input_number.input_house_charge_watts')|int }}"
+      qos: 0
+      retain: false
+      entity_category: "config"
+      icon: "mdi:battery-positive"
+
+    - unique_id: sofar_set_discharge
+      command_topic: "Sofar2mqtt/set/discharge"
+      name: "SOFAR Set Discharge"
+      command_template: "{{ states('input_number.input_house_discharge_watts')|int }}"
+      qos: 0
+      retain: false
+      entity_category: "config"
+      icon: "mdi:battery-negative"
+
+
+
+
+#MQTT Sensors
+  sensor:
+#House Sensors
+    - device_class: "temperature"
+      state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:thermometer"
+      name: "SOFAR Battery Temperature"
+      unique_id: "sofar_battery_temp"
+      unit_of_measurement: "°C"
+      state_topic: "sofar/battery_temp"
+      value_template: "{{ value | float }}"
+
+    - state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:information-variant"
+      name: "SOFAR Inverter State"
+      unique_id: "sofar_inverter_state"
+      state_topic: "sofar/inverter_state"
+
+    - device_class: "voltage"
+      state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:alpha-v"
+      name: "SOFAR Grid Voltage"
+      unique_id: "sofar_grid_voltage"
+      unit_of_measurement: "V"
+      state_topic: "sofar/grid_voltage"
+      value_template: "{{ value | float }}"
+
+    - device_class: "current"
+      state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:alpha-a"
+      name: "SOFAR Grid Current"
+      unique_id: "sofar_grid_current"
+      unit_of_measurement: "A"
+      state_topic: "sofar/grid_current"
+      value_template: "{{ value | float }}"
+
+    - device_class: "frequency"
+      state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:sine-wave"
+      name: "SOFAR Grid Frequency"
+      unique_id: "sofar_grid_freq"
+      unit_of_measurement: "Hz"
+      state_topic: "sofar/grid_freq"
+      value_template: "{{ value | float }}"
+
+    - device_class: "power"
+      state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:battery-charging-100"
+      name: "SOFAR Battery Power"
+      unique_id: "sofar_battery_power"
+      unit_of_measurement: "W"
+      state_topic: "sofar/battery_power"
+      value_template: "{{ value | float }}"
+
+    - device_class: "voltage"
+      state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:alpha-v"
+      name: "SOFAR Battery Voltage"
+      unique_id: "sofar_battery_voltage"
+      unit_of_measurement: "V"
+      state_topic: "sofar/battery_voltage"
+      value_template: "{{ value | float }}"
+
+    - device_class: "current"
+      state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:alpha-a"
+      name: "SOFAR Battery Current"
+      unique_id: "sofar_battery_current"
+      unit_of_measurement: "A"
+      state_topic: "sofar/battery_current"
+      value_template: "{{ value | float }}"
+
+    - device_class: "battery"
+      state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:battery"
+      name: "SOFAR Battery SOC"
+      unique_id: "sofar_batterySOC"
+      unit_of_measurement: "%"
+      state_topic: "sofar/batterySOC"
+      value_template: "{{ value | float }}"
+
+    - state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:battery-sync"
+      name: "SOFAR Battery Cycles"
+      unique_id: "sofar_battery_cycles"
+      state_topic: "sofar/battery_cycles"
+      value_template: "{{ value | float }}"
+
+    - device_class: "power"
+      state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:transmission-tower"
+      name: "SOFAR Grid Power"
+      unique_id: "sofar_grid_power"
+      unit_of_measurement: "W"
+      state_topic: "sofar/grid_power"
+      value_template: "{{ value | float }}"
+
+    - device_class: "power"
+      state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:home-import-outline"
+      name: "SOFAR Load"
+      unique_id: "sofar_consumption"
+      unit_of_measurement: "W"
+      state_topic: "sofar/consumption"
+      value_template: "{{ value | float }}"
+
+    - device_class: "power"
+      state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:solar-power"
+      name: "SOFAR Solar PV Generation"
+      unique_id: "sofar_solarPV"
+      unit_of_measurement: "W"
+      state_topic: "sofar/solarPV"
+      value_template: "{{ value | float }}"
+
+    - device_class: "energy"
+      state_class: "total_increasing"
+      force_update: "true"
+      icon: "mdi:solar-power"
+      name: "SOFAR Today's PV Generation"
+      unique_id: "sofar_today_generation"
+      unit_of_measurement: "kWh"
+      state_topic: "sofar/today_generation"
+      value_template: "{{ value | float }}"
+
+    - device_class: "energy"
+      state_class: "total_increasing"
+      force_update: "true"
+      icon: "mdi:transmission-tower-export"
+      name: "SOFAR Today's Feed-In"
+      unique_id: "sofar_today_export"
+      unit_of_measurement: "kWh"
+      state_topic: "sofar/today_export"  
+      value_template: "{{ value | float }}"
+
+    - device_class: "energy"
+      state_class: "total_increasing"
+      force_update: "true"
+      icon: "mdi:transmission-tower-import"
+      name: "SOFAR Today's Grid Consumption"
+      unique_id: "sofar_today_import"
+      unit_of_measurement: "kWh"
+      state_topic: "sofar/today_import"  
+      value_template: "{{ value | float }}"
+
+    - device_class: "energy"
+      state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:home-import-outline"
+      name: "SOFAR Today's Load"
+      unique_id: "sofar_today_consumption"
+      unit_of_measurement: "kWh"
+      state_topic: "sofar/today_consumption"  
+      value_template: "{{ value | float }}"
+
+    - device_class: "temperature"
+      state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:thermometer"
+      name: "SOFAR Inverter Temperature"
+      unique_id: "sofar_inverter_temp"
+      unit_of_measurement: "°C"
+      state_topic: "sofar/inverter_temp"
+      value_template: "{{ value | float }}"
+
+    - device_class: "temperature"
+      state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:thermometer"
+      name: "SOFAR Inverter Heatsink Temperature"
+      unique_id: "sofar_inverter_heatsink_temp"
+      unit_of_measurement: "°C"
+      state_topic: "sofar/inverter_heatsink_temp"
+      value_template: "{{ value | float }}"
+
+    - device_class: "current"
+      state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:alpha-a"
+      name: "SOFAR PV Current"
+      unique_id: "sofar_solarPVAmps"
+      unit_of_measurement: "A"
+      state_topic: "sofar/solarPVAmps"
+      value_template: "{{ value | float }}"
+
+    - device_class: "monetary"
+      state_class: "total_increasing"
+      force_update: "true"
+      icon: "mdi:currency-gbp"
+      name: "SOFAR Today's Total Generation Earned"
+      unique_id: "sofar_today_total_generation_earned"
+      unit_of_measurement: "£"
+      state_topic: "sofar/today_generation"
+      value_template: "{{(value | float * 0.9345) | round(2)}}"
+
+    - device_class: "monetary"
+      state_class: "total_increasing"
+      force_update: "true"
+      icon: "mdi:currency-gbp"
+      name: "SOFAR Today's PV Generation Earned"
+      unique_id: "sofar_today_generation_earned"
+      unit_of_measurement: "£"
+      state_topic: "sofar/today_generation"
+      value_template: "{{(value | float * 0.623) | round(2)}}"
+
+    - device_class: "monetary"
+      state_class: "total_increasing"
+      force_update: "true"
+      icon: "mdi:currency-gbp"
+      name: "SOFAR Today's Feed-In Earned"
+      unique_id: "sofar_today_export_earned"
+      unit_of_measurement: "£"
+      state_topic: "sofar/today_generation"  
+      value_template: "{{(value | float * 0.3115) | round(2)}}"
+
+    - device_class: "monetary"
+      state_class: "total_increasing"
+      force_update: "true"
+      icon: "mdi:currency-gbp"
+      name: "SOFAR Today's Grid Consumption Cost"
+      unique_id: "sofar_today_import_cost"
+      unit_of_measurement: "£"
+      state_topic: "sofar/today_import" 
+      value_template: "{{(value | float * 0.16) | round(2)}}"
+
+    - device_class: "power"
+      state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:transmission-tower-import"
+      name: "SOFAR Grid Power Importing"
+      unique_id: "sofar_importing_grid_power"
+      unit_of_measurement: "W"
+      state_topic: "sofar/importing_grid_power"
+      value_template: "{{ value | float }}"
+
+    - device_class: "power"
+      state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:transmission-tower-export"
+      name: "SOFAR Grid Power Exporting"
+      unique_id: "sofar_exporting_grid_power"
+      unit_of_measurement: "W"
+      state_topic: "sofar/exporting_grid_power"
+      value_template: "{{ value | float }}"
+
+    - device_class: "power"
+      state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:transmission-tower"
+      name: "SOFAR Grid Power Absolute"
+      unique_id: "sofar_absolute_grid_power"
+      unit_of_measurement: "W"
+      state_topic: "sofar/absolute_grid_power"
+      value_template: "{{ value | float }}"
+
+    - state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:transmission-tower"
+      name: "SOFAR Grid Status"
+      unique_id: "sofar_grid_status"
+      state_topic: "sofar/grid_status"
+
+    - device_class: "power"
+      state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:battery-arrow-up"
+      name: "SOFAR Battery Power Charging"
+      unique_id: "sofar_charging_battery_power"
+      unit_of_measurement: "W"
+      state_topic: "sofar/charging_battery_power"
+      value_template: "{{ value | float }}"
+
+    - device_class: "power"
+      state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:battery-arrow-down"
+      name: "SOFAR Battery Power Discharging"
+      unique_id: "sofar_discharging_battery_power"
+      unit_of_measurement: "W"
+      state_topic: "sofar/discharging_battery_power"
+      value_template: "{{ value | float }}"
+
+    - device_class: "power"
+      state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:battery-charging"
+      name: "SOFAR Battery Power Absolute"
+      unique_id: "sofar_absolute_battery_power"
+      unit_of_measurement: "W"
+      state_topic: "sofar/absolute_battery_power"
+      value_template: "{{ value | float }}"
+
+    - state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:battery-sync"
+      name: "SOFAR Battery Status"
+      unique_id: "sofar_battery_status"
+      state_topic: "sofar/battery_status"
+
+
+
+
+#Sensors
+sensor:
+#House Helpers
+  - platform: integration
+    method: left
+    unit_time: h
+    unit_prefix: k
+    source: sensor.sofar_battery_power_charging
+    name: "SOFAR Today's Total Battery Charge"
+    unique_id: "sofar_today_battery_charge"
+    round: 2
+
+  - platform: integration
+    method: left
+    unit_time: h
+    unit_prefix: k
+    source: sensor.sofar_battery_power_discharging
+    name: "SOFAR Today's Total Battery Discharge"
+    unique_id: "sofar_today_battery_discharge"
+    round: 2
+
+
+#House Utility Meters
+utility_meter:
+  utility_meter_daily_sofar_battery_charge:
+    source: sensor.sofar_today_s_total_battery_charge
+    cycle: daily
+    name: "SOFAR Utility Meter - Daily Total Battery Charge"
+    unique_id: "sofar_utility_meter_daily_total_battery_charge"
+    offset: 0
+    delta_values: false
+    net_consumption: false
+  utility_meter_daily_sofar_battery_discharge:
+    source: sensor.sofar_today_s_total_battery_discharge
+    cycle: daily
+    name: "SOFAR Utility Meter - Daily Total Battery Discharge"
+    unique_id: "sofar_utility_meter_daily_total_battery_discharge"
+    offset: 0
+    delta_values: false
+    net_consumption: false
+  utility_meter_daily_sofar_feed_in:
+    source: sensor.sofar_today_s_feed_in
+    cycle: daily
+    name: "SOFAR Utility Meter - Daily Feed-In"
+    unique_id: "sofar_utility_meter_daily_feed_in"
+    offset: 0
+    delta_values: false
+    net_consumption: false
+  utility_meter_daily_sofar_grid_consumption:
+    source: sensor.sofar_today_s_grid_consumption
+    cycle: daily
+    name: "SOFAR Utility Meter - Daily Grid Consumption"
+    unique_id: "sofar_utility_meter_daily_grid_consumption"
+    offset: 0
+    delta_values: false
+    net_consumption: false
+  utility_meter_daily_sofar_pv_generation:
+    source: sensor.sofar_today_s_pv_generation
+    cycle: daily
+    name: "SOFAR Utility Meter - Daily PV Generation"
+    unique_id: "sofar_utility_meter_daily_pv_generation"
+    offset: 0
+    delta_values: false
+    net_consumption: false
+  utility_meter_daily_sofar_load:
+    source: sensor.sofar_today_s_load
+    cycle: daily
+    name: "SOFAR Utility Meter - Daily Load"
+    unique_id: "sofar_utility_meter_daily_load"
+    offset: 0
+    delta_values: false
+    net_consumption: false
+  utility_meter_daily_sofar_feed_in_earned:
+    source: sensor.sofar_today_s_feed_in_earned
+    cycle: daily
+    name: "SOFAR Utility Meter - Daily Feed-In Earned"
+    unique_id: "sofar_utility_meter_daily_feed_in_earned"
+    offset: 0
+    delta_values: false
+    net_consumption: false
+  utility_meter_daily_sofar_grid_consumption_cost:
+    source: sensor.sofar_today_s_grid_consumption_cost
+    cycle: daily
+    name: "SOFAR Utility Meter - Daily Grid Consumption Cost"
+    unique_id: "sofar_utility_meter_daily_grid_consumption_cost"
+    offset: 0
+    delta_values: false
+    net_consumption: false
+  utility_meter_daily_sofar_pv_generation_earned:
+    source: sensor.sofar_today_s_pv_generation_earned
+    cycle: daily
+    name: "SOFAR Utility Meter - Daily PV Generation Earned"
+    unique_id: "sofar_utility_meter_daily_pv_generation_earned"
+    offset: 0
+    delta_values: false
+    net_consumption: false
+  utility_meter_daily_sofar_total_generation_earned:
+    source: sensor.sofar_today_s_total_generation_earned
+    cycle: daily
+    name: "SOFAR Utility Meter - Daily Total Generation Earned"
+    unique_id: "sofar_utility_meter_daily_total_generation_earned"
+    offset: 0
+    delta_values: false
+    net_consumption: false
+  utility_meter_monthly_sofar_battery_charge:
+    source: sensor.sofar_today_s_total_battery_charge
+    cycle: monthly
+    name: "SOFAR Utility Meter - Monthly Total Battery Charge"
+    unique_id: "sofar_utility_meter_monthly_total_battery_charge"
+    offset: 0
+    delta_values: false
+    net_consumption: false
+  utility_meter_monthly_sofar_battery_discharge:
+    source: sensor.sofar_today_s_total_battery_discharge
+    cycle: monthly
+    name: "SOFAR Utility Meter - Monthly Total Battery Discharge"
+    unique_id: "sofar_utility_meter_monthly_total_battery_discharge"
+    offset: 0
+    delta_values: false
+    net_consumption: false
+  utility_meter_monthly_sofar_feed_in:
+    source: sensor.sofar_today_s_feed_in
+    cycle: monthly
+    name: "SOFAR Utility Meter - Monthly Feed-In"
+    unique_id: "sofar_utility_meter_monthly_feed_in"
+    offset: 0
+    delta_values: false
+    net_consumption: false
+  utility_meter_monthly_sofar_grid_consumption:
+    source: sensor.sofar_today_s_grid_consumption
+    cycle: monthly
+    name: "SOFAR Utility Meter - Monthly Grid Consumption"
+    unique_id: "sofar_utility_meter_monthly_grid_consumption"
+    offset: 0
+    delta_values: false
+    net_consumption: false
+  utility_meter_monthly_sofar_pv_generation:
+    source: sensor.sofar_today_s_pv_generation
+    cycle: monthly
+    name: "SOFAR Utility Meter - Monthly PV Generation"
+    unique_id: "sofar_utility_meter_monthly_pv_generation"
+    offset: 0
+    delta_values: false
+    net_consumption: false
+  utility_meter_monthly_sofar_load:
+    source: sensor.sofar_today_s_load
+    cycle: monthly
+    name: "SOFAR Utility Meter - Monthly Load"
+    unique_id: "sofar_utility_meter_monthly_load"
+    offset: 0
+    delta_values: false
+    net_consumption: false
+  utility_meter_monthly_sofar_feed_in_earned:
+    source: sensor.sofar_today_s_feed_in_earned
+    cycle: monthly
+    name: "SOFAR Utility Meter - Monthly Feed-In Earned"
+    unique_id: "sofar_utility_meter_monthly_feed_in_earned"
+    offset: 0
+    delta_values: false
+    net_consumption: false
+  utility_meter_monthly_sofar_grid_consumption_cost:
+    source: sensor.sofar_today_s_grid_consumption_cost
+    cycle: monthly
+    name: "SOFAR Utility Meter - Monthly Grid Consumption Cost"
+    unique_id: "sofar_utility_meter_monthly_grid_consumption_cost"
+    offset: 0
+    delta_values: false
+    net_consumption: false
+  utility_meter_monthly_sofar_pv_generation_earned:
+    source: sensor.sofar_today_s_pv_generation_earned
+    cycle: monthly
+    name: "SOFAR Utility Meter - Monthly PV Generation Earned"
+    unique_id: "sofar_utility_meter_monthly_pv_generation_earned"
+    offset: 0
+    delta_values: false
+    net_consumption: false
+  utility_meter_monthly_sofar_total_generation_earned:
+    source: sensor.sofar_today_s_total_generation_earned
+    cycle: monthly
+    name: "SOFAR Utility Meter - Monthly Total Generation Earned"
+    unique_id: "sofar_utility_meter_monthly_total_generation_earned"
+    offset: 0
+    delta_values: false
+    net_consumption: false
+
+
+
+
+
+input_number:
+  input_house_charge_watts:
+    name: "Input House Charge Watts"
+    initial: 3000
+    min: 0
+    max: 3000
+    step: 100
+    mode: slider
+    icon: "mdi:battery-positive"
+  input_house_discharge_watts:
+    name: "Input House Discharge Watts"
+    initial: 3000
+    min: 0
+    max: 3000
+    step: 100
+    mode: slider
+    icon: "mdi:battery-negative"
+
+
+
+
+#Recorder
+# Pointless keeping some values over time
+# So looking to keep those we want to chart at any sort of frequency
+# Battery charging/discharging, SOC, importing/exporting, load and PV generation
+# And also the utility meters as they are supposedly going to keep us aggregate figures by day
+
+recorder:
+  exclude:
+    entities:
+      - sensor.sofar_battery_current
+      - sensor.sofar_battery_cycles
+      - sensor.sofar_battery_power
+      - sensor.sofar_battery_power_absolute
+      - sensor.sofar_battery_power_charging
+      - sensor.sofar_battery_power_discharging
+#      - sensor.sofar_battery_soc
+      - sensor.sofar_battery_status
+      - sensor.sofar_battery_temperature
+      - sensor.sofar_battery_voltage
+      - sensor.sofar_grid_current
+      - sensor.sofar_grid_frequency
+      - sensor.sofar_grid_power
+      - sensor.sofar_absolute_grid_power
+#      - sensor.sofar_exporting_grid_power
+#      - sensor.sofar_importing_grid_power
+      - sensor.sofar_grid_status
+#      - sensor.sofar_grid_voltage
+      - sensor.sofar_inverter_heatsink_temperature
+#      - sensor.sofar_inverter_state
+      - sensor.sofar_inverter_temperature
+#      - sensor.sofar_load
+      - sensor.sofar_pv_current
+#      - sensor.sofar_solar_pv_generation
+      - sensor.sofar_today_s_battery_charge
+      - sensor.sofar_today_s_battery_discharge
+      - sensor.sofar_today_s_feed_in
+      - sensor.sofar_today_s_feed_in_earned
+      - sensor.sofar_today_s_grid_consumption
+      - sensor.sofar_today_s_grid_consumption_cost
+      - sensor.sofar_today_s_load
+      - sensor.sofar_today_s_pv_generation
+      - sensor.sofar_today_s_pv_generation_earned
+#      - sensor.sofar_today_s_total_generation_earned
+#      - sensor.sofar_utility_meter_daily_battery_charge
+#      - sensor.sofar_utility_meter_daily_battery_discharge
+#      - sensor.sofar_utility_meter_daily_feed_in
+#      - sensor.sofar_utility_meter_daily_feed_in_earned
+#      - sensor.sofar_utility_meter_daily_grid_consumption
+#      - sensor.sofar_utility_meter_daily_grid_consumption_cost
+#      - sensor.sofar_utility_meter_daily_load
+#      - sensor.sofar_utility_meter_daily_pv_generation
+#      - sensor.sofar_utility_meter_daily_pv_generation_earned
+#      - sensor.sofar_utility_meter_daily_total_generation_earned
+
+#      - input_number.input_house_charge_watts
+#      - input_number.input_house_discharge_watts

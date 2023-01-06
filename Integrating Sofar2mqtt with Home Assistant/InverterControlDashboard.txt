@@ -1,0 +1,108 @@
+views:
+  - theme: Backend-selected
+    title: Control
+    badges: []
+    cards:
+      - type: entities
+        entities:
+          - entity: sensor.sofar_inverter_state
+            name: Inverter State
+          - entity: sensor.sofar_battery_power_absolute
+            name: Battery Power
+            card_mod:
+              style: >
+                ha-card {
+
+                color:      {% if is_state('sensor.sofar_battery_status',
+                'Discharging') %}
+                                  red
+                            {% elif is_state('sensor.sofar_battery_status', 'Charging') %}
+                                 green
+                                {% else %}
+                                  black
+                                {% endif %}
+                }
+          - entity: sensor.sofar_grid_status
+            name: Grid State
+          - entity: sensor.sofar_grid_power_absolute
+            name: Grid Power
+          - entity: sensor.sofar_load
+            name: House Requirements
+        title: Information
+      - square: false
+        columns: 1
+        type: grid
+        title: Normal Modes
+        cards:
+          - show_name: true
+            show_icon: false
+            type: button
+            tap_action:
+              action: toggle
+            entity: button.sofar_set_auto
+            hold_action:
+              action: none
+            name: Click To Set Auto Mode
+            icon_height: 50px
+          - show_name: true
+            show_icon: false
+            type: button
+            tap_action:
+              action: toggle
+            entity: button.sofar_set_battery_save
+            name: Click To Set Battery Save Mode
+      - square: false
+        columns: 1
+        type: grid
+        title: Standby Mode
+        cards:
+          - show_name: true
+            show_icon: false
+            type: button
+            tap_action:
+              action: toggle
+            entity: button.sofar_set_standby
+            hold_action:
+              action: none
+            name: Click To Set Standby Mode
+            icon_height: 50px
+      - square: false
+        columns: 1
+        type: grid
+        title: Charge Mode
+        cards:
+          - type: entities
+            entities:
+              - entity: input_number.input_house_charge_watts
+                name: Charge At (Watts)
+          - show_name: true
+            show_icon: false
+            type: button
+            tap_action:
+              action: toggle
+            entity: button.sofar_set_charge
+            hold_action:
+              action: none
+            name: Click To Set Charge Mode
+            icon_height: 50px
+      - square: false
+        columns: 1
+        type: grid
+        title: Discharge Mode
+        cards:
+          - type: entities
+            entities:
+              - entity: input_number.input_house_discharge_watts
+                name: Discharge At (Watts)
+          - show_name: true
+            show_icon: false
+            type: button
+            tap_action:
+              action: toggle
+            entity: button.sofar_set_discharge
+            hold_action:
+              action: none
+            name: Click To Set Discharge Mode
+            icon_height: 50px
+            show_state: false
+title: Anemone Inverter Control
