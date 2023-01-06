@@ -49,14 +49,14 @@ Once logged in, find the domains section and type in an address.  This will be u
 I recommend you type something fairly unique and something relatively easy.  Don't be surprised if you type in something common - as it will be already used by someone else!
 
 Click 'add domain' in green.
-![DuckDNS Add Domain](Images/Duck1.PNG)
+![DuckDNS Add Domain](Integrating-Sofar2mqtt-with-Home-Assistant/Images/Duck1.PNG)
 
 And it will be added to your account:
-![DuckDNS Added Domain](Images/DuckDNSDone.PNG)
+![DuckDNS Added Domain](Integrating-Sofar2mqtt-with-Home-Assistant/Images/DuckDNSDone.PNG)
 
 At the top of your account, please take note of your token and add these details to your 'setup.txt', it will be in the form
 aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
-![DuckDNS Token](Images/DuckDNSToken.PNG)
+![DuckDNS Token](Integrating-Sofar2mqtt-with-Home-Assistant/Images/DuckDNSToken.PNG)
 
 You can close DuckDNS for now.
 
