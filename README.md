@@ -164,7 +164,7 @@ Click Apply to finish
 You can close your router's configuration page now.
 
 ## Initial Setup of Home Assistant
-Once I go to that address, I am greeted with:
+Once I go to http://homeassistant.local:8123/, I am greeted with:
 
 ![Get Started](Images/Pic2.PNG)
 
@@ -270,6 +270,7 @@ Refresh the window by pressing F5 on your keyboard
 Find and click 'Home Assistant Google Drive Backup' (at the bottom of the store usually) and click INSTALL and wait until completed.  Once completed you'll have a START or UNINSTALL option.
 
 Click 'Show in sidebar'
+![Google Drive Installed](Images/GoogleDriveStart.PNG)
 
 Just click the back arrow
 
