@@ -14,7 +14,7 @@ I recommend you utilise the 3.3v MAX3485 (Red module) if building this yourself.
 I recommend you use Facebook Marketplace for local deals, however, I personally use a [Pi 400 4Gb](https://cpc.farnell.com/raspberry-pi/rpi400-kit-uk/raspberry-pi-400-kit-uk/dp/SC15825?CMP=TREML007-005&fbclid=IwAR0FnhpZ6vZ6hfrmIsEBRuoC5Vwq5PgEHoUJa1dkZE5jQ06H3SgkhRzrS6A)
 
 
-The 400 is identical to the plain Raspberry Pi 4 Model B, however you don't need to build and case the device, and it comes with an integrated and keyboard in mouse to save you needing to source separate ones.  It is still small enough to tuck to one side once it is all up and running.
+The 400 is identical to the plain Raspberry Pi 4 Model B, however you don't need to build and case the device, and it comes with an integrated keyboard and mouse to save you needing to source separate ones.  It is still small enough to tuck to one side once it is all up and running.
 
 
 ### Create a file called 'setup.txt' for notes
@@ -32,7 +32,7 @@ We will be leveraging Google to store automated daily Home Assistant backups so 
 
 
 ### [GitHub](https://github.com/)
-GitHub is a source code management/collaboration tool, but it is also used for authentication purposes.  It is free and well renowed in the software development industry.
+GitHub is a source code management/collaboration tool, but it is also used for authentication purposes.  It is free and well renowed in the software development industry.  This guide is hosted on GitHub!
 
 
 Sign up using the link in the header and the click Sign up at the top right of their page.
@@ -43,10 +43,10 @@ Follow the instructions to set up and activate your account.  Add these details 
 
 
 ### [DuckDNS](https://duckdns.org/)
-DuckDNS is a tool which gives you a static web address for your Internet connection.  Unless you have an extremely fancy Internet connection, every time your router reboots or disconnects from the Internet you will get a different IP address for your next connection.  This is the IP address which is used to present your local area network to the world.  The reason this is done is because there are a finite number of IP addresses and so IPs are dished out from a large pool and are re-used, rather than physically assigning one IP address to your router forever.  It would be a waste if lots of routers were not online and would contribute to IP address shortage.
+DuckDNS is a tool which gives you a static web address for your Internet connection.  Why do you need one?  Well, unless you have an extremely fancy Internet connection, every time your router reboots or disconnects from the Internet you will get a different IP address for your next connection.  This is the IP address which is used to present your local area network to the world and likewise is the address you need to 'dial-in' to your Home Assistant.  The reason different IPs are dished out from a large pool and re-used works on the assumption that not everyone is connected at the same time, saving on the actual number of IP addresses needed at any one time.  But it is no good saving a link which could change over time because the chances are next time you browse to your bookmark in your web browser it will no longer work!
 
 
-So, with DuckDNS configured in Home Assistant later any change of IP address is recorded by DuckDNS and DuckDNS gives you a nice clean URL such as http://mysuperhomeassistantinstall.duckdns.org regardless of what your IP changes to.
+The solution?  When DuckDNS is configured in Home Assistant later any change of IP address is recorded by DuckDNS and DuckDNS gives you a nice fixed and clean URL such as http://mysuperhomeassistantinstall.duckdns.org regardless of what your IP changes to.
 
 
 Sign up using the link in the header.  Click 'Sign in with GitHub' or 'Sign in with Google' and follow the instructions to set up and activate your account.  Add these details to your 'setup.txt'
@@ -55,7 +55,7 @@ Sign up using the link in the header.  Click 'Sign in with GitHub' or 'Sign in w
 Once logged in, find the domains section and type in an address.  This will be used for your Home Assistant.  I am going to be using http://mydan-dan-ha.duckdns.org
 
 
-I recommend you type something fairly unique and something relatively easy.  Don't be surprised if you type in something common - as it will be already used by someone else!
+I recommend you type something fairly unique and something relatively easy.  Don't be surprised if you type in something common and it rejects it - as it will be already used by someone else!
 
 
 Click 'add domain' in green.
@@ -66,8 +66,7 @@ And it will be added to your account:
 ![DuckDNS Added Domain](Images/DuckDNSDone.PNG)
 
 
-At the top of your account, please take note of your token and add these details to your 'setup.txt', it will be in the form
-aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
+At the top of your account, please take note of your token and add these details to your 'setup.txt', it will be in the form aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
 ![DuckDNS Token](Images/DuckDNSToken.PNG)
 
 
