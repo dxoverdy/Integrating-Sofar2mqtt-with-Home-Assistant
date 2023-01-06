@@ -49,7 +49,7 @@ Once logged in, find the domains section and type in an address.  This will be u
 I recommend you type something fairly unique and something relatively easy.  Don't be surprised if you type in something common - as it will be already used by someone else!
 
 Click 'add domain' in green.
-![DuckDNS Add Domain](Integrating-Sofar2mqtt-with-Home-Assistant/Images/Duck1.PNG)
+![DuckDNS Add Domain]("Integrating Sofar2mqtt with Home Assistant/Images/Duck1.PNG")
 
 And it will be added to your account:
 ![DuckDNS Added Domain](Integrating-Sofar2mqtt-with-Home-Assistant/Images/DuckDNSDone.PNG)
