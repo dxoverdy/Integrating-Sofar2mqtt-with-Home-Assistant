@@ -1,5 +1,6 @@
 # Integrating Sofar2mqtt with Home Assistant
 ## Full instructions to get going with a Sofar2mqtt, Raspberry Pi and Home Assistant.
+This is an exhaustive guide, fully documented, screenshotted step by step.  This will take around 4 to 5 hours to complete, depending on technical experience.
 
 ## Prerequisites
 ### Sofar2mqtt
@@ -904,6 +905,6 @@ Scroll down to Network Adapter and configure your Wi-Fi settings.  Once done and
 
 
 ## Queries
-I will endeavour to help you if you are struggling.  Try email or [Facebook](https://www.facebook.com/mydan100/).
+I will endeavour to help you if you are struggling.  If I have missed something or you have something to add to this step by step guide please email or [Facebook](https://www.facebook.com/mydan100/).
 
 Daniel Young 2023 [daniel@mydan.com](daniel@mydan.com)
