@@ -22,6 +22,15 @@ The 400 is identical to the plain Raspberry Pi 4 Model B, however you don't need
 
 Save it to your desktop, open it in Notepad and have it ready throughout this guide to save account details and links and tokens as you go along.
 
+### Downloading files from this repository
+All files are available from the [Integrating Sofar2mqtt with Home Assistant](https://github.com/dxoverdy/Integrating-Sofar2mqtt-with-Home-Assistant/tree/master/Integrating%20Sofar2mqtt%20with%20Home%20Assistant) folder in this repository.
+
+For the avoidance of doubt, I'd recommend two ways to download the contents to avoid introducing error by copying text or contents from your web browser.
+
+-The first way is to right click on a file, for example Sofar2mqtt.json and left click on the equivalent of 'Save Link As...' in your browser.  Save it to a folder of your choosing.
+![Right Click](Images/Download.png)
+-The other way is to download the whole repository as a zip by left clicking on the green 'Code'  button on the front page of the repository, and then left click on 'Download zip'
+![Download Repository](Images/Download2.png)
 
 ## Accounts you will need to create if you don't already have
 
