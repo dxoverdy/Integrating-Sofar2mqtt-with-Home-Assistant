@@ -635,6 +635,7 @@ Click 'select a file to import' and browse to the Sofar2MQTT.json downloaded a f
 Click 'new flow' for Import to
 
 Click Import
+![Sofar Flow Settings](Images/NodeRedSofarImportOptions.PNG)
 
 The flow will appear in the right hand side, and also in a tab at the top.  Click the tab:
 ![Sofar Flow](Images/SofarFlow.PNG)
@@ -670,8 +671,9 @@ Click 'select a file to import' and browse to the Economy7Management.json downlo
 Click 'new flow' for Import to
 
 Click Import
+![Sofar Flow Settings](Images/E7ImportSettings.PNG)
 
-It may moan about duplication of nodes, choose 'Import Copy'
+It may prompt "Some of the nodes you are importing already exist in your workspace", just choose 'Import Copy'
 
 The flow will appear in the right hand side, and also in a tab at the top.  Click the tab:
 ![Node Red Import E7 Settings](Images/E7Flow.PNG)
