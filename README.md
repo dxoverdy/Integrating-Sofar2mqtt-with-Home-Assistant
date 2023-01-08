@@ -35,7 +35,7 @@ For the avoidance of doubt, I'd recommend two ways to download the contents to a
 ## Accounts you will need to create if you don't already have
 
 ### [Google](https://www.google.co.uk/)
-Google is more than just a search engine, with an account you are entitled to free storage called Google Drive, an email address and much much more.  You probably have one, but if not, sign up using the link in the header.  Add these details to your 'setup.txt'
+Google is more than just a search engine, with an account you are entitled to free storage called Google Drive, an email address and much much more.  You probably have one, but if not, sign up using the link in the header.  Add these details to your 'setup.txt'.
 
 
 We will be leveraging Google to store automated daily Home Assistant backups so that in the case of memory card failure, you can easily restore as was.
@@ -104,7 +104,7 @@ You will see quite a lot of text scrolling along the screen as it boots up, howe
 Highlighted in this pic are two elements, first is the Local IP address dedicated to your Raspberry Pi by your router.  The second is the URL which you can use to access Home Assistant on your local network via a phone, tablet or computer.
 
 
-As such, open Chrome or any browser of your choice and navigate to http://homeassistant.local:8123/ or in my case, I can navigate to http://192.168.1.112:8123/ as that is the Local IP address given to my Raspberry Pi by your router.  Your Local IP address will undoubtedly be different to mine.
+As such, open Chrome or any browser of your choice and navigate to http://homeassistant.local:8123/ or in my case, I can navigate to http://192.168.1.112:8123/ as that is the Local IP address given to my Raspberry Pi by my router.  Your Local IP address will be different to mine.
 
 
 Your IP (in my case 192.168.1.112) should be added to your 'setup.txt' file as Sofar2mqtt will need this to post inverter messages later.
@@ -113,7 +113,7 @@ Your IP (in my case 192.168.1.112) should be added to your 'setup.txt' file as S
 ### Configuring your Router
 We need to ensure that
 
-- Your Raspberry Pi always gets given the same Local IP address, in my case 192.168.1.112, every time it is booted up.  Your router will work like your Internet IP and re-use IP addresses from a pool for the same reasons of IP address shortage.
+- Your Raspberry Pi always gets given the same Local IP address, in my case 192.168.1.112, every time it is booted up.  Like your Internet connection, it is no good programming Sofar2mqtt with the current Local IP only for it to change when your router dishes out a different Local IP to your Pi!  Your router will work like your Internet IP and re-use IP addresses from a pool for the same reasons of IP address shortage.
 
 - Open up port 8123 (the bit after the colon in the address above) to the outside world so you can access your Home Assistant from anywhere.
 
@@ -234,7 +234,7 @@ Find and click File editor and click INSTALL and wait until completed.  Once com
 
 Click 'Show in sidebar'
 
-Just click the back arrow
+Click the back arrow
 
 ### Mosquitto broker
 Find and click Mosquitto broker and click INSTALL and wait until completed.  Once completed you'll have a START or UNINSTALL option.
@@ -257,7 +257,7 @@ UNTICK ssl
 ![Node-RED Credentials](Images/NodeRedCredential.PNG)
 Click SAVE
 
-Just click the back arrow
+Click the back arrow
 
 
 ### Google Drive Backup
@@ -281,7 +281,7 @@ Find and click 'Home Assistant Google Drive Backup' (at the bottom of the store 
 Click 'Show in sidebar'
 ![Google Drive Installed](Images/GoogleDriveStart.PNG)
 
-Just click the back arrow
+Click the back arrow
 
 
 ### Terminal & SSH
@@ -292,7 +292,7 @@ Click 'Show in sidebar'
 
 Click 'START'
 
-Just click the back arrow
+Click the back arrow
 
 
 ### HACS
@@ -598,9 +598,10 @@ Now, we need to take the details of our Mosquitto broker now running on our Home
 From your 'setup.txt' file, you should have the Local IP Address of your Raspberry Pi.  In my case this was 192.168.1.112
 
 You should also have the username and password we configured in Mosquitto.  In my case this was
-- Username: battery
-- Password: Switch1
-
+```
+- username: battery
+  password: Switch1
+```
 I am assuming you have followed the build and configuration instructions on the Sofar2mqtt site, and that you have Arduino open with Sofar2mqtt.ino ready in there.
 
 * One thing Sofar2mqtt does not mention is D1mini drivers.  Install the drivers from https://www.wemos.cc/en/latest/ch340_driver.html if you need them.
