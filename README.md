@@ -737,6 +737,8 @@ In the right hand side you will see it is a pretty simple config at this stage. 
 
 Download the configuration.yaml from this GitHub Repository
 
+** IF YOU ARE USING A HYBRID INVERTER, download and use hybrid-configuration.yaml **
+
 Open the file in Notepad
 
 Copy all the contents using Edit -> Select All and copy using Edit -> Copy
@@ -788,6 +790,9 @@ Click the three dots at the top right and click 'Raw configuration editor'
 Select all the text currently in there and get rid.
 
 Open SofarDashboard.txt from this repository in Notepad and copy and paste the contents into the window like so:
+
+** IF YOU ARE USING A HYBRID INVERTER, download and use hybrid-SofarDashboard.yaml **
+
 ![Raw Config Sofar Dashboard](Images/SofarDashboard.PNG)
 
 Click SAVE at the top right
