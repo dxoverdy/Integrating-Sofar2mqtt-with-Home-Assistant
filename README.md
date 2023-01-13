@@ -791,7 +791,7 @@ Select all the text currently in there and get rid.
 
 Open SofarDashboard.txt from this repository in Notepad and copy and paste the contents into the window like so:
 
-** IF YOU ARE USING A HYBRID INVERTER, download and use hybrid-SofarDashboard.yaml **
+** IF YOU ARE USING A HYBRID INVERTER, download and use hybrid-SofarDashboard.txt **
 
 ![Raw Config Sofar Dashboard](Images/SofarDashboard.PNG)
 
