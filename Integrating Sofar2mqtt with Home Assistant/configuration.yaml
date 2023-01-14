@@ -134,6 +134,18 @@ mqtt:
       state_topic: "sofar/battery_power"
       value_template: "{{ value | float }}"
 
+    - device_class: "power"
+      state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:meter-electric-outline"
+      name: "SOFAR System IO Power"
+      unique_id: "sofar_system_io_power"
+      unit_of_measurement: "W"
+      state_topic: "sofar/systemIO_power"
+      value_template: "{{ value | float }}"
+
+
+
     - device_class: "voltage"
       state_class: "measurement"
       force_update: "true"
@@ -200,6 +212,26 @@ mqtt:
       unique_id: "sofar_solarPV"
       unit_of_measurement: "W"
       state_topic: "sofar/solarPV"
+      value_template: "{{ value | float }}"
+
+    - device_class: "power"
+      state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:solar-power"
+      name: "SOFAR Solar PV Array 1 Generation"
+      unique_id: "sofar_solar_pv_array_1_generation"
+      unit_of_measurement: "W"
+      state_topic: "sofar/Solarpv1"
+      value_template: "{{ value | float }}"
+
+    - device_class: "power"
+      state_class: "measurement"
+      force_update: "true"
+      icon: "mdi:solar-power"
+      name: "SOFAR Solar PV Array 2 Generation"
+      unique_id: "sofar_solar_pv_array_2_generation"
+      unit_of_measurement: "W"
+      state_topic: "sofar/Solarpv2"
       value_template: "{{ value | float }}"
 
     - device_class: "energy"
@@ -410,9 +442,54 @@ sensor:
     unique_id: "sofar_today_battery_discharge"
     round: 2
 
+  - platform: integration
+    unit_time: h
+    unit_prefix: k
+    source: sensor.sofar_grid_power_exporting
+    name: "SOFAR Exported Energy"
+    unique_id: "sofar_exported_energy"
+    round: 2
+
+  - platform: integration
+    unit_time: h
+    unit_prefix: k
+    source: sensor.sofar_grid_power_importing
+    name: "SOFAR Imported Energy"
+    unique_id: "sofar_imported_energy"
+    round: 2
+
 
 #House Utility Meters
 utility_meter:
+  utility_meter_daily_sofar_exported_energy:
+    source: sensor.sofar_exported_energy
+    cycle: daily
+    name: "SOFAR Utility Meter - Daily Exported Energy"
+    unique_id: "sofar_utility_meter_daily_exported_energy"
+    offset: 0
+    delta_values: false
+    net_consumption: false
+
+  utility_meter_daily_sofar_imported_energy:
+    source: sensor.sofar_imported_energy
+    cycle: daily
+    name: "SOFAR Utility Meter - Daily Imported Energy"
+    unique_id: "sofar_utility_meter_daily_imported_energy"
+    offset: 0
+    delta_values: false
+    net_consumption: false
+
+
+  utility_meter_daily_sofar_battery_discharge:
+    source: sensor.sofar_today_s_total_battery_discharge
+    cycle: daily
+    name: "SOFAR Utility Meter - Daily Total Battery Discharge"
+    unique_id: "sofar_utility_meter_daily_total_battery_discharge"
+    offset: 0
+    delta_values: false
+    net_consumption: false
+
+
   utility_meter_daily_sofar_battery_charge:
     source: sensor.sofar_today_s_total_battery_charge
     cycle: daily

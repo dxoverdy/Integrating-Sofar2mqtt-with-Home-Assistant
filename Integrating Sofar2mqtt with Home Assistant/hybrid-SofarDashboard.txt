@@ -1,4 +1,4 @@
-title: SOFAR
+title: SOFAR Hybrid
 views:
   - theme: Backend-selected
     path: default_view
@@ -112,7 +112,7 @@ views:
             entity: sensor.sofar_today_s_load
             name: House
           - type: entity
-            entity: sensor.sofar_today_grid_consumption
+            entity: sensor.sofar_today_s_grid_consumption
             name: Grid Consumption
             style: |
               ha-card {
@@ -206,10 +206,10 @@ views:
             entity: sensor.sofar_pv_current
             name: Current
           - type: entity
-            entity: sensor.sofar_solar_pv_generation_array_1
+            entity: sensor.sofar_solar_pv_array_1_generation
             name: Array 1
           - type: entity
-            entity: sensor.sofar_solar_pv_generation_array_2
+            entity: sensor.sofar_solar_pv_array_2_generation
             name: Array 2
       - square: false
         columns: 3
@@ -218,7 +218,7 @@ views:
         cards:
           - type: entity
             entity: sensor.sofar_system_io_power
-            name: Voltage
+            name: IO Power
   - theme: Backend-selected
     title: TODAY'S POWER DIAGRAM
     path: todays-power-diagram
@@ -486,6 +486,131 @@ views:
                 formatter: |
                   EVAL:function(value) {
                     return value.toFixed(2).toString() + " kWh";
+                  }
+  - theme: Backend-selected
+    title: PV Array 1
+    path: pv-array-1
+    icon: ''
+    type: panel
+    badges: []
+    cards:
+      - type: custom:apexcharts-card
+        apex_config:
+          yaxis:
+            forceNiceScale: true
+          chart:
+            height: 600px
+          stroke:
+            width: 1.5
+            curve: smooth
+        graph_span: 24h
+        all_series_config:
+          stroke_width: 1.5
+          opacity: 0.4
+          type: area
+          curve: smooth
+        now:
+          show: true
+          color: red
+        span:
+          start: day
+        header:
+          show: false
+          title: Battery
+          show_states: true
+          colorize_states: true
+        series:
+          - entity: sensor.sofar_solar_pv_array_1_generation
+            float_precision: 2
+            name: PV
+            transform: return x / 1000;
+            yaxis_id: power
+            type: area
+            color: '#FABF00'
+            unit: kW
+            extend_to: now
+            curve: smooth
+            fill_raw: last
+            opacity: 0.5
+            group_by:
+              func: avg
+              duration: 5min
+            show:
+              legend_value: false
+        yaxis:
+          - id: power
+            min: 0
+            decimals: 2
+            apex_config:
+              forceNiceScale: true
+              title:
+                text: POWER
+              labels:
+                formatter: |
+                  EVAL:function(value) {
+                    return value.toFixed(2).toString() + " kW";
+                  }
+  - theme: Backend-selected
+    title: PV Array 2
+    path: pv-array-2
+    type: panel
+    badges: []
+    cards:
+      - type: custom:apexcharts-card
+        apex_config:
+          yaxis:
+            forceNiceScale: true
+          chart:
+            height: 600px
+          stroke:
+            width: 1.5
+            curve: smooth
+        graph_span: 24h
+        all_series_config:
+          stroke_width: 1.5
+          opacity: 0.4
+          type: area
+          curve: smooth
+        now:
+          show: true
+          color: red
+        span:
+          start: day
+        header:
+          show: false
+          title: Battery
+          show_states: true
+          colorize_states: true
+        series:
+          - entity: sensor.sofar_solar_pv_array_2_generation
+            float_precision: 2
+            name: PV
+            transform: return x / 1000;
+            yaxis_id: power
+            type: area
+            color: '#FABF00'
+            unit: kW
+            extend_to: now
+            curve: smooth
+            fill_raw: last
+            opacity: 0.5
+            group_by:
+              func: avg
+              duration: 5min
+            show:
+              legend_value: false
+        yaxis:
+          - id: power
+            min: 0
+            decimals: 2
+            apex_config:
+              forceNiceScale: true
+              title:
+                text: POWER
+              labels:
+                formatter: |
+                  EVAL:function(value) {
+                    return value.toFixed(2).toString() + " kW";
                   }
   - theme: Backend-selected
     type: panel
