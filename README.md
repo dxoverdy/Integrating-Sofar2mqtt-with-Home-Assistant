@@ -924,3 +924,16 @@ Scroll down to Network Adapter and configure your Wi-Fi settings.  Once done and
 I will endeavour to help you if you are struggling.  If I have missed something or you have something to add to this step by step guide please email or [Facebook](https://www.facebook.com/mydan100/).
 
 Daniel Young 2023 [daniel@mydan.com](daniel@mydan.com)
+
+
+## Version History
+
+### V1 - Initial Release
+Initial release
+
+
+### V1.1 - 2023-05-16
+Home Assistant now requires 'device_class' set to 'enum' for sensors which return text, as such, configuration.yaml modified so that sofar_inverter_state, sofar_grid_status and sofar_battery_status now include this declaration.
+
+If you have this problem on a custom configuration.yaml, simply add device_class: "enum" to each of the three affected sensors in your configuration.yaml, ala:
+![Enum](Images/Enum.PNG)

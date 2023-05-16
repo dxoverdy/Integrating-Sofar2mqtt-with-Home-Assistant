@@ -93,7 +93,6 @@ mqtt:
       name: "SOFAR Inverter State"
       unique_id: "sofar_inverter_state"
       state_topic: "sofar/inverter_state"
-      device_class: "enum"
 
     - device_class: "voltage"
       state_class: "measurement"
@@ -381,7 +380,6 @@ mqtt:
       name: "SOFAR Grid Status"
       unique_id: "sofar_grid_status"
       state_topic: "sofar/grid_status"
-      device_class: "enum"
 
     - device_class: "power"
       state_class: "measurement"
@@ -419,7 +417,7 @@ mqtt:
       name: "SOFAR Battery Status"
       unique_id: "sofar_battery_status"
       state_topic: "sofar/battery_status"
-      device_class: "enum"
+
 
 
 
@@ -500,7 +498,14 @@ utility_meter:
     offset: 0
     delta_values: false
     net_consumption: false
-
+  utility_meter_daily_sofar_battery_discharge:
+    source: sensor.sofar_today_s_total_battery_discharge
+    cycle: daily
+    name: "SOFAR Utility Meter - Daily Total Battery Discharge"
+    unique_id: "sofar_utility_meter_daily_total_battery_discharge"
+    offset: 0
+    delta_values: false
+    net_consumption: false
   utility_meter_daily_sofar_feed_in:
     source: sensor.sofar_today_s_feed_in
     cycle: daily
